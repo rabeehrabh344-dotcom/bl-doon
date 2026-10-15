@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeDrop | Blood Donation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="LifeDrop home"><span class="brand-icon">♥</span> LifeDrop</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#donate">Donate Blood</a>
+      <a href="#request">Need Blood?</a>
+      <a href="#admin">Admin Panel</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">GIVE BLOOD. GIVE HOPE.</span>
+        <h1>Your little act can<br><span>save a life.</span></h1>
+        <p>Connect blood donors with people who need help. Every donation can make a real difference.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#donate">Become a Donor</a>
+          <a class="btn btn-light" href="#request">Request Blood</a>
+        </div>
+        <div class="hero-note"><span class="pulse-dot"></span> One donation can help save lives.</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="blood-drop">♥</div>
+        <div class="art-card art-card-top"><span>🩸</span><div><strong>Be a hero</strong><small>Donate blood today</small></div></div>
+        <div class="art-card art-card-bottom"><span>❤</span><div><strong>Every drop matters</strong><small>Help someone in need</small></div></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>01</strong><span>Register as a donor</span></div>
+      <div><strong>02</strong><span>Find a matching donor</span></div>
+      <div><strong>03</strong><span>Connect and help</span></div>
+    </section>
+
+    <section class="section" id="donate">
+      <div class="section-heading">
+        <span class="eyebrow">BECOME A LIFESAVER</span>
+        <h2>Register as a <span>blood donor</span></h2>
+        <p>Share your details so people can contact you when your blood group is needed.</p>
+      </div>
+      <form id="donorForm" class="form-card">
+        <div class="form-grid">
+          <label>Full name<input type="text" id="donorName" required maxlength="80" placeholder="Enter your full name"></label>
+          <label>Phone / WhatsApp number<input type="tel" id="donorPhone" required maxlength="20" placeholder="e.g. 9876543210"></label>
+          <label>Blood group<select id="donorGroup" required><option value="">Select blood group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label>City / Location<input type="text" id="donorLocation" required maxlength="100" placeholder="Enter your location"></label>
+        </div>
+        <label class="checkbox-row"><input type="checkbox" id="donorConsent" required> I agree to share my contact details with people who need blood.</label>
+        <button class="btn btn-primary" type="submit">Register as Donor</button>
+        <p class="form-message" id="donorMessage" role="status"></p>
+      </form>
+    </section>
+
+    <section class="request-section" id="request">
+      <div class="request-copy">
+        <span class="eyebrow">URGENT BLOOD REQUEST</span>
+        <h2>Need blood for<br><span>someone you love?</span></h2>
+        <p>Submit a request with the required blood group and hospital details. Please also contact the hospital or blood bank directly in emergencies.</p>
+        <div class="urgent-note">⚠️ This website is a demo directory, not an emergency medical service.</div>
+      </div>
+      <form id="requestForm" class="form-card request-card">
+        <h3>Request blood</h3>
+        <div class="form-grid">
+          <label>Patient / contact name<input type="text" id="requestName" required maxlength="80" placeholder="Enter name"></label>
+          <label>Contact / WhatsApp number<input type="tel" id="requestPhone" required maxlength="20" placeholder="e.g. 9876543210"></label>
+          <label>Blood group needed<select id="requestGroup" required><option value="">Select blood group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label>Units needed<input type="number" id="requestUnits" required min="1" max="20" value="1"></label>
+          <label>Hospital name<input type="text" id="requestHospital" required maxlength="120" placeholder="Hospital name"></label>
+          <label>Location<input type="text" id="requestLocation" required maxlength="100" placeholder="City / area"></label>
+          <label>Required date<input type="date" id="requestDate" required></label>
+        </div>
+        <label>Additional details (optional)<textarea id="requestDetails" rows="3" maxlength="500" placeholder="Any helpful details"></textarea></label>
+        <label class="checkbox-row"><input type="checkbox" id="requestConsent" required> I confirm these details can be used to coordinate this blood request.</label>
+        <button class="btn btn-primary" type="submit">Submit Blood Request</button>
+        <p class="form-message" id="requestMessage" role="status"></p>
+      </form>
+    </section>
+
+    <section class="section search-section" id="find">
+      <div class="section-heading">
+        <span class="eyebrow">FIND SUPPORT</span>
+        <h2>Search registered <span>donors</span></h2>
+        <p>Filter the demo donor list by blood group and location.</p>
+      </div>
+      <div class="search-controls">
+        <label>Blood group<select id="searchGroup"><option value="">All groups</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+        <label>Location<input id="searchLocation" type="search" placeholder="Type a city or area"></label>
+      </div>
+      <div id="donorResults" class="donor-results"></div>
+      <p class="privacy-note">Contact donors respectfully. Donor availability and eligibility must be confirmed directly.</p>
+    </section>
+
+    <section class="admin-section" id="admin">
+      <div class="section-heading">
+        <span class="eyebrow">WEBSITE MANAGEMENT</span>
+        <h2>Admin <span>panel</span></h2>
+        <p>View registrations, update request status, contact people on WhatsApp, or export data.</p>
+      </div>
+      <div class="admin-warning">Demo admin panel: there is no login or server security. Do not publish sensitive real data using this version.</div>
+      <div class="admin-toolbar">
+        <div class="admin-tabs"><button class="tab active" data-tab="donorsTab">Donors <span id="donorCount">0</span></button><button class="tab" data-tab="requestsTab">Blood requests <span id="requestCount">0</span></button></div>
+        <button class="btn btn-outline btn-small" id="exportBtn">Export CSV</button>
+      </div>
+      <div class="table-wrap" id="donorsTab"><table><thead><tr><th>Name</th><th>Blood group</th><th>Location</th><th>Phone</th><th>Actions</th></tr></thead><tbody id="donorTable"></tbody></table></div>
+      <div class="table-wrap hidden" id="requestsTab"><table><thead><tr><th>Contact</th><th>Blood</th><th>Hospital / Location</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody id="requestTable"></tbody></table></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#home"><span class="brand-icon">♥</span> LifeDrop</a>
+    <p>Made to encourage blood donation and community support.</p>
+    <small>Demo project · Not a replacement for hospitals, blood banks, or emergency services.</small>
+  </footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
